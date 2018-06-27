@@ -15,29 +15,19 @@ public class Enemy : MonoBehaviour, IDamagable
     [SerializeField] float secondsBetweenShots = 0.5f;
     [SerializeField] GameObject projectileToUse;
     [SerializeField] GameObject projectileSocket;
+    [SerializeField] Vector3 aimOffset = new Vector3(0, 1f, 0);
 
-    float currentHealthPoints = 100f;
+    float currentHealthPoints;
 
     AICharacterControl aic = null;
     GameObject player = null;
-
-    public float healthAsPercentage
-    {
-        get
-        {
-            return currentHealthPoints / maxHealthPoints;
-        }
-    }
-
-    public void TakeDamage(float damage)
-    {
-        currentHealthPoints -= Mathf.Clamp(currentHealthPoints - damage, 0f, currentHealthPoints);
-    }
 
     void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player");
         aic = GetComponent<AICharacterControl>();
+
+        currentHealthPoints = maxHealthPoints;
     }
 
     void Update()
@@ -67,6 +57,22 @@ public class Enemy : MonoBehaviour, IDamagable
         }
     }
 
+
+    public float healthAsPercentage
+    {
+        get
+        {
+            return currentHealthPoints / maxHealthPoints;
+        }
+    }
+
+    public void TakeDamage(float damage)
+    {
+        currentHealthPoints = Mathf.Clamp(currentHealthPoints - damage, 0f, currentHealthPoints);
+        if (currentHealthPoints <= 0)
+            Destroy(gameObject);
+    }
+
     private bool PlayerIsOutsideAttackRange(float distanceToPlayer)
     {
         return distanceToPlayer > attackRadius;
@@ -81,7 +87,8 @@ public class Enemy : MonoBehaviour, IDamagable
 
         // get position to player and set the velocity of the Rigidbody inside the projectile game object
         // using the formula unitVectorToPlayer * projectileSpeed
-        Vector3 unitVectorToPlayer = (player.transform.position - projectileSocket.transform.position).normalized;
+        // we add the player position and add an offset to it so the projectile hit 1 point up in the y axys
+        Vector3 unitVectorToPlayer = (player.transform.position + aimOffset - projectileSocket.transform.position).normalized;
         float projectileSpeed = projectileComponent.projectileSpeed;
         newProjectile.GetComponent<Rigidbody>().velocity = unitVectorToPlayer * projectileSpeed;
     }
