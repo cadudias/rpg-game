@@ -48,6 +48,6 @@ public class Player : MonoBehaviour, IDamagable {
 
     public void TakeDamage(float damage)
     {
-        currentHealthPoints = Mathf.Clamp((currentHealthPoints - damage), 0f, currentHealthPoints);
+        currentHealthPoints = Mathf.Clamp(currentHealthPoints - damage, 0f, maxHealthPoints);
     }
 }
