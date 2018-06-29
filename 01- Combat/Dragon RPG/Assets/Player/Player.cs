@@ -8,7 +8,6 @@ public class Player : MonoBehaviour, IDamagable {
     [SerializeField] float minTimesBetweenHits = .5f;
     [SerializeField] float maxAttackRange = 2f;
     
-
     GameObject currentTarget;
     public CameraRaycaster cameraRaycaster;
     
@@ -34,9 +33,7 @@ public class Player : MonoBehaviour, IDamagable {
 
             // check enemy is in range
             if ((enemy.transform.position - transform.position).magnitude > maxAttackRange)
-            {
                 return;
-            }
 
             currentTarget = enemy;
 
