@@ -7,6 +7,7 @@ public class Player : MonoBehaviour, IDamagable {
     [SerializeField] float damagePerShot = 30f;
     [SerializeField] float minTimesBetweenHits = .5f;
     [SerializeField] float maxAttackRange = 2f;
+    [SerializeField] Weapon weaponInUse;
     
     GameObject currentTarget;
     public CameraRaycaster cameraRaycaster;
@@ -19,10 +20,25 @@ public class Player : MonoBehaviour, IDamagable {
 
     void Start()
     {
+        RegisterForMouseClick();
+        currentHealthPoints = maxHealthPoints;
+        PutWeaponInHand();
+    }
+
+    private void PutWeaponInHand()
+    {
+        // get default weapon
+        var weaponPrefab = weaponInUse.GetWeaponPrefab();
+        var weapon = Instantiate(weaponPrefab); // TODo move to corect place in hand
+        // set the weapon to the weapon scriptable object
+
+        //  set the 
+    }
+
+    private void RegisterForMouseClick()
+    {
         cameraRaycaster = Camera.main.GetComponent<CameraRaycaster>();
         cameraRaycaster.notifyMouseClickObservers += OnMouseClick;
-
-        currentHealthPoints = maxHealthPoints;
     }
 
     void OnMouseClick(RaycastHit raycastHit, int layerHit)
