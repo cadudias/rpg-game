@@ -10,8 +10,7 @@ public class PlayerMovement : MonoBehaviour
 {
     ThirdPersonCharacter thirdPersonCharacter;   // A reference to the ThirdPersonCharacter on the object
     CameraRaycaster cameraRaycaster;
-    Vector3 currentDestination;
-
+    
     [SerializeField] const int walkableLayer = 8;
     [SerializeField] const int enemyLayer = 9;
     [SerializeField] const int unkownLayer = 2;
@@ -23,7 +22,6 @@ public class PlayerMovement : MonoBehaviour
     {
         cameraRaycaster = Camera.main.GetComponent<CameraRaycaster>();
         thirdPersonCharacter = GetComponent<ThirdPersonCharacter>();
-        currentDestination = transform.position;
         aic = GetComponent<AICharacterControl>();
 
         walkTarget = new GameObject("walkTarget");

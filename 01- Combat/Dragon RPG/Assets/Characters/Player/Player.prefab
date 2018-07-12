@@ -30,7 +30,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 149790}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 271.7, y: 0, z: 152.7}
+  m_LocalPosition: {x: 271.16458, y: 0, z: 153.57944}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4309648988766348}
@@ -236,6 +236,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4200736440269566}
+  - component: {fileID: 114603919262278788}
   m_Layer: 0
   m_Name: Hand_R
   m_TagString: Untagged
@@ -768,8 +769,20 @@ MonoBehaviour:
   damagePerShot: 50
   minTimesBetweenHits: 1
   maxAttackRange: 2
+  weaponInUse: {fileID: 11400000, guid: 1d34ae9399376784284f12f438c7cba9, type: 2}
   cameraRaycaster: {fileID: 0}
   maxHealthPoints: 1000
+--- !u!114 &114603919262278788
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1250412876629316}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d620ec466c53d15439881215d756182c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!137 &137438963823124282
 SkinnedMeshRenderer:
   m_ObjectHideFlags: 1
