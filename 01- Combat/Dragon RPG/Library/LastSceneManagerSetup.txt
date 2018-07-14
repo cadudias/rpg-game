@@ -1,4 +1,4 @@
 sceneSetups:
-- path: Assets/Levels/Rick's Village.unity
+- path: Assets/_Levels/Rick's Village.unity
   isLoaded: 1
   isActive: 1
