@@ -13,9 +13,9 @@ namespace RPG.Characters
         [SerializeField] int enemyLayer = 9;
         [SerializeField] float damagePerShot = 30f;
 
-        [SerializeField] PlayerWeapon weaponInUse;
+        [SerializeField] PlayerWeapon weaponInUse = null;
 
-        [SerializeField] AnimatorOverrideController animatorOverrideController;
+        [SerializeField] AnimatorOverrideController animatorOverrideController = null;
         Animator animator;
         string ATTACK_ANIMATION = "Attack";
 
