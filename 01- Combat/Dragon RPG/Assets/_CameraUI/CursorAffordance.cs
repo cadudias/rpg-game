@@ -6,8 +6,6 @@ namespace RPG.CameraUI
     [RequireComponent(typeof(CameraRaycaster))]
     public class CursorAffordance : MonoBehaviour
     {
-
-        [SerializeField] Texture2D walkCursor = null;
         [SerializeField] Texture2D attackCursor = null;
         //[SerializeField] Texture2D unknowCursor = null;
         [SerializeField] Vector2 cursorHotspot = new Vector2(0, 0);
@@ -28,9 +26,6 @@ namespace RPG.CameraUI
         {
             switch (newLayer)
             {
-                case walkableLayer:
-                    Cursor.SetCursor(walkCursor, cursorHotspot, CursorMode.Auto);
-                    break;
                 case enemyLayer:
                     Cursor.SetCursor(attackCursor, cursorHotspot, CursorMode.Auto);
                     break;

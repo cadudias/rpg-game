@@ -157,21 +157,16 @@ Prefab:
       propertyPath: m_RootOrder
       value: 2
       objectReference: {fileID: 0}
-    - target: {fileID: 114602213056998382, guid: 7737647c22c1fc64a88d5cd030c352ce,
-        type: 2}
-      propertyPath: weaponInUse
+    - target: {fileID: 13615390, guid: 7737647c22c1fc64a88d5cd030c352ce, type: 2}
+      propertyPath: m_Material
       value: 
-      objectReference: {fileID: 11400000, guid: 18df9151bd85ecc428573a1e9060a693,
+      objectReference: {fileID: 13400000, guid: 52baaeb214519f347a35cf0edfd262ff,
         type: 2}
-    - target: {fileID: 4605996892148356, guid: 7737647c22c1fc64a88d5cd030c352ce, type: 2}
-      propertyPath: m_LocalPosition.x
-      value: 0.05
-      objectReference: {fileID: 0}
-    - target: {fileID: 114602213056998382, guid: 7737647c22c1fc64a88d5cd030c352ce,
+    - target: {fileID: 114135564012626756, guid: 7737647c22c1fc64a88d5cd030c352ce,
         type: 2}
-      propertyPath: maxHealthPoints
-      value: 1000
-      objectReference: {fileID: 0}
+      propertyPath: energyBar
+      value: 
+      objectReference: {fileID: 2030028698}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 7737647c22c1fc64a88d5cd030c352ce, type: 2}
   m_IsPrefabParent: 0
@@ -492,7 +487,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0c2170eb0a7fd414ca712d7fbabc547f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  walkCursor: {fileID: 2800000, guid: 490010fbb57018749a8437a5a518ef9e, type: 3}
   attackCursor: {fileID: 2800000, guid: 559c9be4df2e03347808c8139416e524, type: 3}
   cursorHotspot: {x: 0, y: 0}
   cameraRaycaster: {fileID: 0}
@@ -508,6 +502,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   layerPriorities: 0900000008000000
+  walkCursor: {fileID: 2800000, guid: 490010fbb57018749a8437a5a518ef9e, type: 3}
+  cursorHotspot: {x: 0, y: 0}
 --- !u!81 &89206525
 AudioListener:
   m_ObjectHideFlags: 0
@@ -6703,20 +6699,6 @@ CanvasRenderer:
 GameObject:
   m_PrefabParentObject: {fileID: 149790, guid: 7737647c22c1fc64a88d5cd030c352ce, type: 2}
   m_PrefabInternal: {fileID: 43396621}
---- !u!114 &2039941713
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 2039941712}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 04952dc1a54bfcd4eaf5b05dc6c65d8d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  energyBar: {fileID: 2030028698}
-  maxEnergyPoints: 100
-  pointsPerHit: 10
 --- !u!4 &2043472206 stripped
 Transform:
   m_PrefabParentObject: {fileID: 4157677616727550, guid: b7d7305e35613874fb5554770f48ce88,

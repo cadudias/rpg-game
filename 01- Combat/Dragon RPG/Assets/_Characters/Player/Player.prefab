@@ -16,6 +16,7 @@ GameObject:
   - component: {fileID: 114576517642870190}
   - component: {fileID: 114588575570430840}
   - component: {fileID: 114602213056998382}
+  - component: {fileID: 114135564012626756}
   m_Layer: 10
   m_Name: Player
   m_TagString: Player
@@ -30,7 +31,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 149790}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 271.16458, y: 0, z: 153.57944}
+  m_LocalPosition: {x: 323.84, y: 4.87, z: 106.34}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4309648988766348}
@@ -96,7 +97,7 @@ CapsuleCollider:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 149790}
-  m_Material: {fileID: 13400000, guid: 52baaeb214519f347a35cf0edfd262ff, type: 2}
+  m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
   m_Radius: 0.3
@@ -641,7 +642,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1041593493932520}
   m_LocalRotation: {x: 1.9973712e-21, y: -0.00000035762793, z: 5.5850536e-15, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0.05, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 408730}
@@ -731,6 +732,20 @@ Transform:
   m_Father: {fileID: 4907878933761472}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &114135564012626756
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 149790}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 04952dc1a54bfcd4eaf5b05dc6c65d8d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  energyBar: {fileID: 0}
+  maxEnergyPoints: 100
+  pointsPerHit: 10
 --- !u!114 &114576517642870190
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -767,9 +782,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemyLayer: 9
   damagePerShot: 50
-  minTimesBetweenHits: 1
-  maxAttackRange: 2
-  weaponInUse: {fileID: 11400000, guid: 1d34ae9399376784284f12f438c7cba9, type: 2}
+  weaponInUse: {fileID: 11400000, guid: 18df9151bd85ecc428573a1e9060a693, type: 2}
   animatorOverrideController: {fileID: 22100000, guid: fc507f71b1ee36247a9c5afd223f51f5,
     type: 2}
   cameraRaycaster: {fileID: 0}
@@ -800,11 +813,11 @@ SkinnedMeshRenderer:
   m_ReflectionProbeUsage: 1
   m_RenderingLayerMask: 4294967295
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 21a71f080eecf56448fdfc7cc15fe42f, type: 2}
+  - {fileID: 2100000, guid: 21a71f080eecf56448fdfc7cc15fe42f, type: 2}
+  - {fileID: 2100000, guid: 21a71f080eecf56448fdfc7cc15fe42f, type: 2}
+  - {fileID: 2100000, guid: 0956a8267cb000946a476cb0f30745c5, type: 2}
+  - {fileID: 2100000, guid: f62b52b2d4b721742a0bc5c6b4db468d, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

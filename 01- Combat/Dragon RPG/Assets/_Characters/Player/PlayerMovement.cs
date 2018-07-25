@@ -27,6 +27,17 @@ namespace RPG.Characters
             walkTarget = new GameObject("walkTarget");
 
             cameraRaycaster.notifyMouseClickObservers += ProcessMouseClick;
+            cameraRaycaster.onMouseOverPotentiallyWalkable += OnMouseOverPotentiallyWalkable;
+        }
+
+        void OnMouseOverPotentiallyWalkable(Vector3 destination)
+        {
+            // Notify delegates of highest priority game object under mouse when clicked
+            if (Input.GetMouseButton(0))
+            {
+                walkTarget.transform.position = destination;
+                aic.SetTarget(walkTarget.transform);
+            }
         }
 
         void ProcessMouseClick(RaycastHit raycastHit, int layerHit)
@@ -36,11 +47,6 @@ namespace RPG.Characters
                 case enemyLayer:
                     GameObject enemy = raycastHit.collider.gameObject;
                     aic.SetTarget(enemy.transform);
-                    break;
-                case walkableLayer:
-                    // here we use just the position from transform and not scale and rotation
-                    walkTarget.transform.position = raycastHit.point;
-                    aic.SetTarget(walkTarget.transform);
                     break;
                 default:
                     break;
