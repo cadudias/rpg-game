@@ -12,10 +12,6 @@ namespace RPG.Characters
     {
         CameraRaycaster cameraRaycaster;
 
-        [SerializeField] const int walkableLayer = 8;
-        [SerializeField] const int enemyLayer = 9;
-        [SerializeField] const int unkownLayer = 2;
-
         AICharacterControl aic = null;
         GameObject walkTarget = null;
 
@@ -26,8 +22,16 @@ namespace RPG.Characters
 
             walkTarget = new GameObject("walkTarget");
 
-            cameraRaycaster.notifyMouseClickObservers += ProcessMouseClick;
             cameraRaycaster.onMouseOverPotentiallyWalkable += OnMouseOverPotentiallyWalkable;
+            cameraRaycaster.onMouseOverEnemy += OnMouseOverEnemy;
+        }
+
+        void OnMouseOverEnemy(Enemy enemy)
+        {
+            if (Input.GetMouseButton(0) || Input.GetMouseButtonDown(0))
+            {
+                aic.SetTarget(enemy.transform);
+            }
         }
 
         void OnMouseOverPotentiallyWalkable(Vector3 destination)
@@ -39,32 +43,6 @@ namespace RPG.Characters
                 aic.SetTarget(walkTarget.transform);
             }
         }
-
-        void ProcessMouseClick(RaycastHit raycastHit, int layerHit)
-        {
-            switch (layerHit)
-            {
-                case enemyLayer:
-                    GameObject enemy = raycastHit.collider.gameObject;
-                    aic.SetTarget(enemy.transform);
-                    break;
-                default:
-                    break;
-            }
-        }
-
-        //private void ProcessDirectMovement()
-        //{
-        //    // read inputs
-        //    float h = Input.GetAxis("Horizontal");
-        //    float v = Input.GetAxis("Vertical");
-
-        //    // calculate camera relative direction to move:
-        //    Vector3 cameraForward = Vector3.Scale(Camera.main.transform.forward, new Vector3(1, 0, 1)).normalized;
-        //    Vector3 movement = v * cameraForward + h * Camera.main.transform.right;
-
-        //    thirdPersonCharacter.Move(movement, false, false);
-        //}
 
         private Vector3 ShortDestination(Vector3 destination, float shortening)
         {

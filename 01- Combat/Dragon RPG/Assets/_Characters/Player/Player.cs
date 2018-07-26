@@ -10,7 +10,6 @@ namespace RPG.Characters
 {
     public class Player : MonoBehaviour, IDamagable
     {
-        [SerializeField] int enemyLayer = 9;
         [SerializeField] float damagePerShot = 30f;
 
         [SerializeField] PlayerWeapon weaponInUse = null;
@@ -74,31 +73,24 @@ namespace RPG.Characters
         private void RegisterForMouseClick()
         {
             cameraRaycaster = Camera.main.GetComponent<CameraRaycaster>();
-            cameraRaycaster.notifyMouseClickObservers += OnMouseClick;
+            cameraRaycaster.onMouseOverEnemy += OnMouseOverEnemy;
         }
 
-        void OnMouseClick(RaycastHit raycastHit, int layerHit)
+        void OnMouseOverEnemy(Enemy enemy)
         {
-            if (layerHit == enemyLayer)
+            if (Input.GetMouseButton(0) && IsTargetInRange(enemy.gameObject))
             {
-                var enemy = raycastHit.collider.gameObject;
-
-                // check enemy is in range
-                if (IsTargetInRange(enemy))
-                {
-                    AttackTarget(enemy);
-                }
+                AttackTarget(enemy);
             }
         }
 
-        private void AttackTarget(GameObject target)
+        private void AttackTarget(Enemy enemy)
         {
-            var enemyComponent = target.GetComponent<Enemy>();
             if (AttackDelayTimeEnded())
             {
                 PlayAnimation();
 
-                enemyComponent.TakeDamage(damagePerShot);
+                enemy.TakeDamage(damagePerShot);
                 lastHitTime = Time.time;
             }
         }

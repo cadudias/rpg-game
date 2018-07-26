@@ -16,7 +16,6 @@ namespace RPG.Characters
         // Use this for initialization
         void Start()
         {
-            //energyBar = GetComponent<RawImage>();
             currentEnergyPoints = maxEnergyPoints;
             RegisterForMouseClick();
         }
@@ -24,14 +23,21 @@ namespace RPG.Characters
         private void RegisterForMouseClick()
         {
             cameraRaycaster = Camera.main.GetComponent<CameraRaycaster>();
-            cameraRaycaster.notifyRightClickObservers += OnMouseClick;
+            cameraRaycaster.onMouseOverEnemy += OnMouseOverEnemy;
         }
 
-        void OnMouseClick()
+        void OnMouseOverEnemy(Enemy enemy)
+        {
+            if (Input.GetMouseButton(1))
+            {
+                UpdateEnergyPoints();
+                UpdateEnergyBar();
+            }
+        }
+
+        private void UpdateEnergyPoints()
         {
             currentEnergyPoints = Mathf.Clamp(currentEnergyPoints - pointsPerHit, 0f, maxEnergyPoints);
-
-            UpdateEnergyBar();
         }
 
         private void UpdateEnergyBar()
