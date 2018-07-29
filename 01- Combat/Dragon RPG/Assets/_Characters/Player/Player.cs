@@ -25,6 +25,10 @@ namespace RPG.Characters
 
         [SerializeField] float maxHealthPoints = 300f;
 
+        [SerializeField]
+        public SpecialAbilityConfig[] abilities;
+        Energy energy;
+
         public float healthAsPercentage
         {
             get
@@ -38,6 +42,9 @@ namespace RPG.Characters
             RegisterForMouseClick();
             SetCurrentMaxHealth();
             PutWeaponInHand();
+
+            abilities[0].AttachComponent(gameObject);
+
             SetupRuntimeAnimator();
         }
 
@@ -82,6 +89,28 @@ namespace RPG.Characters
             {
                 AttackTarget(enemy);
             }
+            else if (Input.GetMouseButtonDown(1))
+            {
+                AttemptSpecialAbility(0, enemy);
+            }
+        }
+
+        private void AttemptSpecialAbility(int abilityIndex, Enemy enemy)
+        {
+            energy = GetComponent<Energy>();
+
+            var energyCost = abilities[abilityIndex].energyCost;
+            if (energy.IsEnergyAvailable(energyCost))
+            {
+                energy.ConsumeEnergy(energyCost);
+                abilities[abilityIndex].Use();
+            }
+        }
+
+        private void IsLeftClick(Enemy enemy)
+        {
+            if (Input.GetMouseButton(0) && IsTargetInRange(enemy.gameObject))
+                AttackTarget(enemy);
         }
 
         private void AttackTarget(Enemy enemy)
