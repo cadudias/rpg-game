@@ -1,5 +1,4 @@
 ﻿using UnityEngine;
-using UnityStandardAssets.Characters.ThirdPerson;
 
 // TODO consider re-wiring
 using RPG.Core;
@@ -7,7 +6,7 @@ using RPG.Weapons;
 
 namespace RPG.Characters
 {
-    public class Enemy : MonoBehaviour, IDamagable
+    public class Enemy : MonoBehaviour, IDamageable
     {
         public bool IsAttacking = false;
 

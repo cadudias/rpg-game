@@ -32,10 +32,10 @@ namespace RPG.Weapons
 
         private void DamageIfDamageable(Collision collision)
         {
-            Component damagableComponent = collision.gameObject.GetComponent(typeof(IDamagable));
+            Component damagableComponent = collision.gameObject.GetComponent(typeof(IDamageable));
 
             if (damagableComponent)
-                (damagableComponent as IDamagable).TakeDamage(damageCaused);
+                (damagableComponent as IDamageable).TakeDamage(damageCaused);
 
             Destroy(gameObject, destroyDelay);
         }

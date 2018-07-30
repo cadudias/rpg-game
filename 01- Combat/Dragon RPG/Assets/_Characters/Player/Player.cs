@@ -8,9 +8,9 @@ using RPG.Weapons;
 
 namespace RPG.Characters
 {
-    public class Player : MonoBehaviour, IDamagable
+    public class Player : MonoBehaviour, IDamageable
     {
-        [SerializeField] float damagePerShot = 30f;
+        [SerializeField] float baseDamage = 30f;
 
         [SerializeField] PlayerWeapon weaponInUse = null;
 
@@ -26,7 +26,7 @@ namespace RPG.Characters
         [SerializeField] float maxHealthPoints = 300f;
 
         [SerializeField]
-        public SpecialAbilityConfig[] abilities;
+        public SpecialAbility[] abilities;
         Energy energy;
 
         public float healthAsPercentage
@@ -99,11 +99,15 @@ namespace RPG.Characters
         {
             energy = GetComponent<Energy>();
 
-            var energyCost = abilities[abilityIndex].energyCost;
+            var energyCost = abilities[abilityIndex].GetEnergyCost();
             if (energy.IsEnergyAvailable(energyCost))
             {
                 energy.ConsumeEnergy(energyCost);
-                abilities[abilityIndex].Use();
+
+                var abilityParams = new AbilityUseParams(enemy, baseDamage);
+                print("enemy " + enemy.name);
+                abilities[abilityIndex].Use(abilityParams);
+
             }
         }
 
@@ -119,7 +123,7 @@ namespace RPG.Characters
             {
                 PlayAnimation();
 
-                enemy.TakeDamage(damagePerShot);
+                enemy.TakeDamage(baseDamage);
                 lastHitTime = Time.time;
             }
         }

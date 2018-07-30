@@ -1,8 +1,22 @@
-﻿using UnityEngine;
+﻿using System;
+using RPG.Core;
+using UnityEngine;
 
 namespace RPG.Characters
 {
-    public abstract class SpecialAbilityConfig : ScriptableObject
+    public struct AbilityUseParams
+    {
+        public IDamageable target;
+        public float baseDamage;
+
+        public AbilityUseParams(IDamageable target, float baseDamage)
+        {
+            this.target = target;
+            this.baseDamage = baseDamage;
+        }
+    }
+
+    public abstract class SpecialAbility : ScriptableObject
     {
         //Header - group things by section
         [Header("Special Ability General")]
@@ -14,9 +28,19 @@ namespace RPG.Characters
         // adds the component to the player at runtime
         abstract public void AttachComponent(GameObject gameObjectToAttachTo);
 
-        public void Use()
+        public void Use(AbilityUseParams useParams)
         {
-            behaviour.Use();
+            behaviour.Use(useParams);
         }
+
+        public float GetEnergyCost()
+        {
+            return energyCost;
+        }
+    }
+
+    public interface ISpecialAbility
+    {
+        void Use(AbilityUseParams useParams);
     }
 }

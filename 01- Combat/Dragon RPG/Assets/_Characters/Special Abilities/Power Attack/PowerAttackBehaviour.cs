@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 namespace RPG.Characters
 {
@@ -13,21 +11,10 @@ namespace RPG.Characters
             this.config = configToSet;
         }
 
-        public void Use()
+        public void Use(AbilityUseParams useParams)
         {
-            throw new System.NotImplementedException();
-        }
-
-        // Use this for initialization
-        void Start()
-        {
-            print("power attack special ability attached to: " + gameObject.name);
-        }
-
-        // Update is called once per frame
-        void Update()
-        {
-
+            float damageToDeal = useParams.baseDamage + config.GetExtraDamage();
+            useParams.target.TakeDamage(damageToDeal);
         }
     }
 }
