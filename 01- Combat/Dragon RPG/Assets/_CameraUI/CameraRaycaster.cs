@@ -22,6 +22,9 @@ namespace RPG.CameraUI
         public delegate void OnMouseOverEnemy(Enemy enemy);
         public event OnMouseOverEnemy onMouseOverEnemy;
 
+        // drawn a rectangle of th size of the screen
+        Rect screenRectAtStartPlay = new Rect(0, 0, Screen.width, Screen.height); // move inside update to support screen resize
+
         void Update()
         {
             // Check if pointer is over an interactable UI element
@@ -53,19 +56,18 @@ namespace RPG.CameraUI
         bool RaycastForEnemy(Ray ray)
         {
             RaycastHit hitInfo;
-            //print("ray" + ray);
 
-            Physics.Raycast(ray, out hitInfo, maxRaycastDepth);
-            
-            var gameObjectHit = hitInfo.collider.gameObject;
-            
-            var enemyHit = gameObjectHit.GetComponent<Enemy>();
-            
-            if (enemyHit)
+            if (Physics.Raycast(ray, out hitInfo, maxRaycastDepth))
             {
-                Cursor.SetCursor(enemyCursor, cursorHotspot, CursorMode.Auto);
-                onMouseOverEnemy(enemyHit);
-                return true;
+                var gameObjectHit = hitInfo.collider.gameObject;
+                var enemyHit = gameObjectHit.GetComponent<Enemy>();
+
+                if (enemyHit)
+                {
+                    Cursor.SetCursor(enemyCursor, cursorHotspot, CursorMode.Auto);
+                    onMouseOverEnemy(enemyHit);
+                    return true;
+                }
             }
 
             return false;
