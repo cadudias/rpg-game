@@ -5,6 +5,8 @@ using UnityEngine.Assertions;
 using RPG.CameraUI;
 using RPG.Core;
 using RPG.Weapons;
+using System.Collections;
+using UnityEngine.SceneManagement;
 
 namespace RPG.Characters
 {
@@ -29,6 +31,11 @@ namespace RPG.Characters
         public SpecialAbility[] abilities;
         Energy energy;
 
+        [SerializeField] AudioClip[] damageSounds;
+        [SerializeField] AudioClip[] deathSounds;
+
+        AudioSource audioSource;
+
         public float healthAsPercentage
         {
             get
@@ -46,6 +53,8 @@ namespace RPG.Characters
             abilities[0].AttachComponent(gameObject);
 
             SetupRuntimeAnimator();
+
+            audioSource = gameObject.GetComponent<AudioSource>();
         }
 
         private void SetupRuntimeAnimator()
@@ -105,7 +114,6 @@ namespace RPG.Characters
                 energy.ConsumeEnergy(energyCost);
 
                 var abilityParams = new AbilityUseParams(enemy, baseDamage);
-                print("enemy " + enemy.name);
                 abilities[abilityIndex].Use(abilityParams);
 
             }
@@ -147,6 +155,29 @@ namespace RPG.Characters
         }
 
         public void TakeDamage(float damage)
+        {
+            ReduceHealth(damage);
+            audioSource.clip = damageSounds[Random.Range(0, damageSounds.Length)];
+            audioSource.Play();
+            bool playerDies = (currentHealthPoints - damage <= 0);
+            if (playerDies) // player dies
+            {
+                ReduceHealth(damage);
+                StartCoroutine(KillPlayer());
+            }
+        }
+
+        IEnumerator KillPlayer()
+        {
+            // reload scene with SceneManager.Reload
+            audioSource.clip = deathSounds[Random.Range(0, deathSounds.Length)];
+            audioSource.Play();
+            yield return new WaitForSecondsRealtime(2f); // TODO use audio clip later
+            //Scene scene = SceneManager.GetActiveScene();
+            SceneManager.LoadScene(0);
+        }
+
+        private void ReduceHealth(float damage)
         {
             currentHealthPoints = Mathf.Clamp(currentHealthPoints - damage, 0f, maxHealthPoints);
         }

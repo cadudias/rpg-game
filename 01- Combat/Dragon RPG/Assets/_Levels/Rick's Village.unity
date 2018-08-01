@@ -157,28 +157,16 @@ Prefab:
       propertyPath: m_RootOrder
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 114135564012626756, guid: 7737647c22c1fc64a88d5cd030c352ce,
-        type: 2}
-      propertyPath: energyBar
-      value: 
-      objectReference: {fileID: 2030028698}
     - target: {fileID: 13615390, guid: 7737647c22c1fc64a88d5cd030c352ce, type: 2}
       propertyPath: m_Material
       value: 
       objectReference: {fileID: 13400000, guid: 52baaeb214519f347a35cf0edfd262ff,
         type: 2}
-    - target: {fileID: 114602213056998382, guid: 7737647c22c1fc64a88d5cd030c352ce,
+    - target: {fileID: 114135564012626756, guid: 7737647c22c1fc64a88d5cd030c352ce,
         type: 2}
-      propertyPath: abilities.Array.data[0]
+      propertyPath: energyBar
       value: 
-      objectReference: {fileID: 11400000, guid: 069cb212d5c0a2d42b2016cc7de8e8b8,
-        type: 2}
-    - target: {fileID: 114602213056998382, guid: 7737647c22c1fc64a88d5cd030c352ce,
-        type: 2}
-      propertyPath: abilities.Array.data[1]
-      value: 
-      objectReference: {fileID: 11400000, guid: b45c314a122b7364c9faf8bb1cd033cb,
-        type: 2}
+      objectReference: {fileID: 2030028698}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7737647c22c1fc64a88d5cd030c352ce, type: 2}
   m_IsPrefabAsset: 0
@@ -1527,17 +1515,17 @@ Prefab:
     - target: {fileID: 108579632348699964, guid: b72ef681d127c914f8080ca46199c614,
         type: 2}
       propertyPath: m_Color.g
-      value: 0.93918175
+      value: 0.9205714
       objectReference: {fileID: 0}
     - target: {fileID: 108579632348699964, guid: b72ef681d127c914f8080ca46199c614,
         type: 2}
       propertyPath: m_Color.b
-      value: 1
+      value: 0.8852795
       objectReference: {fileID: 0}
     - target: {fileID: 108579632348699964, guid: b72ef681d127c914f8080ca46199c614,
         type: 2}
       propertyPath: m_Color.r
-      value: 0.9292453
+      value: 0.9245283
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b72ef681d127c914f8080ca46199c614, type: 2}
@@ -5272,7 +5260,7 @@ Light:
   m_Enabled: 1
   serializedVersion: 8
   m_Type: 1
-  m_Color: {r: 0.9292453, g: 0.93918175, b: 1, a: 1}
+  m_Color: {r: 0.9245283, g: 0.9205714, b: 0.8852795, a: 1}
   m_Intensity: 1
   m_Range: 10
   m_SpotAngle: 30
