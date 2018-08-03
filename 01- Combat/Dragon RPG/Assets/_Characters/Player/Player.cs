@@ -18,7 +18,8 @@ namespace RPG.Characters
 
         [SerializeField] AnimatorOverrideController animatorOverrideController = null;
         Animator animator;
-        string ATTACK_ANIMATION = "Attack";
+        string DEATH_TRIGGER = "Death";
+        string ATTACK_TRIGGER = "Attack";
 
         public CameraRaycaster cameraRaycaster;
 
@@ -138,7 +139,7 @@ namespace RPG.Characters
 
         private void PlayAnimation()
         {
-            animator.SetTrigger(ATTACK_ANIMATION);
+            animator.SetTrigger(ATTACK_TRIGGER);
         }
 
         private bool AttackDelayTimeEnded()
@@ -156,30 +157,32 @@ namespace RPG.Characters
 
         public void TakeDamage(float damage)
         {
+            bool playerDies = (currentHealthPoints - damage <= 0); // must ask before reducing health
             ReduceHealth(damage);
-            audioSource.clip = damageSounds[Random.Range(0, damageSounds.Length)];
-            audioSource.Play();
-            bool playerDies = (currentHealthPoints - damage <= 0);
+
             if (playerDies) // player dies
             {
-                ReduceHealth(damage);
                 StartCoroutine(KillPlayer());
             }
         }
 
         IEnumerator KillPlayer()
         {
+            animator.SetTrigger(DEATH_TRIGGER);
+
             // reload scene with SceneManager.Reload
             audioSource.clip = deathSounds[Random.Range(0, deathSounds.Length)];
             audioSource.Play();
             yield return new WaitForSecondsRealtime(2f); // TODO use audio clip later
-            //Scene scene = SceneManager.GetActiveScene();
             SceneManager.LoadScene(0);
         }
 
         private void ReduceHealth(float damage)
         {
             currentHealthPoints = Mathf.Clamp(currentHealthPoints - damage, 0f, maxHealthPoints);
+
+            audioSource.clip = damageSounds[Random.Range(0, damageSounds.Length)];
+            audioSource.Play();
         }
     }
 }

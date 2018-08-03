@@ -3855,6 +3855,11 @@ Prefab:
       propertyPath: m_RootOrder
       value: 12
       objectReference: {fileID: 0}
+    - target: {fileID: 114483736501969318, guid: 34dca9ba8e1445d438e50188121eaa38,
+        type: 2}
+      propertyPath: variation
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 34dca9ba8e1445d438e50188121eaa38, type: 2}
   m_IsPrefabAsset: 0
@@ -5139,6 +5144,11 @@ Prefab:
     - target: {fileID: 1454693317167608, guid: 34dca9ba8e1445d438e50188121eaa38, type: 2}
       propertyPath: m_Name
       value: Archer (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 114483736501969318, guid: 34dca9ba8e1445d438e50188121eaa38,
+        type: 2}
+      propertyPath: variation
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 34dca9ba8e1445d438e50188121eaa38, type: 2}
