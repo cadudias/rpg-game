@@ -12,5 +12,7 @@ MonoBehaviour:
   m_Name: Area Of Effect Level 1
   m_EditorClassIdentifier: 
   energyCost: 10
+  particlePrefab: {fileID: 1183293929021436, guid: afb80d6c524ccd84dbed7d199eb3e02b,
+    type: 2}
   radius: 5
   damageToEachTarget: 10
