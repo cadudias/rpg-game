@@ -5,7 +5,13 @@ namespace RPG.Characters
 {
     public class PowerAttackBehaviour : MonoBehaviour, ISpecialAbility
     {
-        PowerAttackConfig config;
+        PowerAttackConfig config = null;
+        AudioSource audioSource = null;
+
+        void Start()
+        {
+            audioSource = GetComponent<AudioSource>();
+        }
 
         public void SetConfig(PowerAttackConfig configToSet)
         {
@@ -15,6 +21,8 @@ namespace RPG.Characters
         public void Use(AbilityUseParams useParams)
         {
             DealRadialDamage(useParams);
+            audioSource.clip = config.GetAudioClip();
+            audioSource.Play();
             PlayParticleEffect();
         }
 
