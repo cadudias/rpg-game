@@ -37,7 +37,8 @@ namespace RPG.Characters
             // instantiate a particle system prefab attached to player
             // config.GetParticlePrefab() - get the particle prefab from the config
             // transform.position from the player because this behaviour is attached to the player
-            var prefab = Instantiate(config.GetParticlePrefab(), transform.position, Quaternion.identity);
+            var particlePrefab = config.GetParticlePrefab();
+            var prefab = Instantiate(particlePrefab, transform.position, particlePrefab.transform.rotation);
             Debug.Log(config.GetParticlePrefab());
             ParticleSystem myParticleSystem = prefab.GetComponent<ParticleSystem>();
             myParticleSystem.Play();
