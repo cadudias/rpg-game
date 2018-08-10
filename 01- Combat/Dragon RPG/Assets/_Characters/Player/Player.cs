@@ -85,7 +85,6 @@ namespace RPG.Characters
         {
             for (int keyIndex = 1; keyIndex < abilities.Length; keyIndex++)
             {
-                Debug.Log(keyIndex.ToString());
                 if (Input.GetKeyDown(keyIndex.ToString()))
                 {
                     AttemptSpecialAbility(keyIndex);

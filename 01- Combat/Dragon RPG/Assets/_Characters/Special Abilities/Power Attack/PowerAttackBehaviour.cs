@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace RPG.Characters
 {
-    public class PowerAttackBehaviour : MonoBehaviour, ISpecialAbility
+    public class PowerAttackBehaviour : AbilityBehaviour
     {
         PowerAttackConfig config = null;
         AudioSource audioSource = null;
@@ -18,7 +18,7 @@ namespace RPG.Characters
             this.config = configToSet;
         }
 
-        public void Use(AbilityUseParams useParams)
+        public override void Use(AbilityUseParams useParams)
         {
             DealRadialDamage(useParams);
             audioSource.clip = config.GetAudioClip();
@@ -39,7 +39,7 @@ namespace RPG.Characters
             // transform.position from the player because this behaviour is attached to the player
             var particlePrefab = config.GetParticlePrefab();
             var prefab = Instantiate(particlePrefab, transform.position, particlePrefab.transform.rotation);
-            Debug.Log(config.GetParticlePrefab());
+            
             ParticleSystem myParticleSystem = prefab.GetComponent<ParticleSystem>();
             myParticleSystem.Play();
             Destroy(prefab, myParticleSystem.main.duration);

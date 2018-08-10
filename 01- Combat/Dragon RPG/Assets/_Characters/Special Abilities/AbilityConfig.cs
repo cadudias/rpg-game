@@ -24,7 +24,7 @@ namespace RPG.Characters
         [SerializeField] GameObject particlePrefab = null;
 
         // sub Config classes can set this value
-        protected ISpecialAbility behaviour;
+        protected AbilityBehaviour behaviour;
 
         [SerializeField] AudioClip audioClip = null;
 

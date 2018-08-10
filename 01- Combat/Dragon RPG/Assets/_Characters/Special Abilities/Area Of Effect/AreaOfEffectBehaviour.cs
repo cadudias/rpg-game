@@ -1,10 +1,9 @@
-﻿using System;
-using RPG.Core;
+﻿using RPG.Core;
 using UnityEngine;
 
 namespace RPG.Characters
 {
-    public class AreaOfEffectBehaviour : MonoBehaviour, ISpecialAbility
+    public class AreaOfEffectBehaviour : AbilityBehaviour
     {
         AreaOfEffectConfig config;
         AudioSource audioSource = null;
@@ -19,7 +18,7 @@ namespace RPG.Characters
             this.config = configToSet;
         }
 
-        public void Use(AbilityUseParams useParams)
+        public override void Use(AbilityUseParams useParams)
         {
             DealRadialDamage(useParams);
             audioSource.clip = config.GetAudioClip();

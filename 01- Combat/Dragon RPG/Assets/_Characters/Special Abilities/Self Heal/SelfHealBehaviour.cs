@@ -1,9 +1,8 @@
-﻿using System;
-using UnityEngine;
+﻿using UnityEngine;
 
 namespace RPG.Characters
 {
-    public class SelfHealBehaviour : MonoBehaviour, ISpecialAbility
+    public class SelfHealBehaviour : AbilityBehaviour
     {
         SelfHealConfig config = null;
         AudioSource audioSource = null;
@@ -18,12 +17,12 @@ namespace RPG.Characters
             this.config = configToSet;
         }
 
-        public void Use(AbilityUseParams useParams)
+        public override void Use(AbilityUseParams useParams)
         {
             HealHP();
             audioSource.clip = config.GetAudioClip();
             audioSource.Play();
-            //PlayParticleEffect();
+            PlayParticleEffect();
         }
 
         private void HealHP()
@@ -32,16 +31,17 @@ namespace RPG.Characters
             player.Heal(config.GetHealAmount());
         }
 
-        //private void PlayParticleEffect()
-        //{
-        //    // instantiate a particle system prefab attached to player
-        //    // config.GetParticlePrefab() - get the particle prefab from the config
-        //    // transform.position from the player because this behaviour is attached to the player
-        //    var prefab = Instantiate(config.GetParticlePrefab(), transform.position, Quaternion.identity);
-        //    Debug.Log(config.GetParticlePrefab());
-        //    ParticleSystem myParticleSystem = prefab.GetComponent<ParticleSystem>();
-        //    myParticleSystem.Play();
-        //    Destroy(prefab, myParticleSystem.main.duration);
-        //}
+        private void PlayParticleEffect()
+        {
+            // instantiate a particle system prefab attached to player
+            // config.GetParticlePrefab() - get the particle prefab from the config
+            // transform.position from the player because this behaviour is attached to the player
+            var particlePrefab = config.GetParticlePrefab();
+            var prefab = Instantiate(particlePrefab, transform.position, particlePrefab.transform.rotation, transform);
+            
+            ParticleSystem myParticleSystem = prefab.GetComponent<ParticleSystem>();
+            myParticleSystem.Play();
+            Destroy(prefab, myParticleSystem.main.duration);
+        }
     }
 }
