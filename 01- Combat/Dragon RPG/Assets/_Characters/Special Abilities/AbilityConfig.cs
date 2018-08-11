@@ -1,5 +1,4 @@
-﻿using System;
-using RPG.Core;
+﻿using RPG.Core;
 using UnityEngine;
 
 namespace RPG.Characters
@@ -21,12 +20,12 @@ namespace RPG.Characters
         //Header - group things by section
         [Header("Special Ability General")]
         [SerializeField] public float energyCost = 10f;
-        [SerializeField] GameObject particlePrefab = null;
+        [SerializeField] GameObject particlePrefab;
 
         // sub Config classes can set this value
         protected AbilityBehaviour behaviour;
 
-        [SerializeField] AudioClip audioClip = null;
+        [SerializeField] AudioClip[] audioClips;
 
         // adds the component to the player at runtime
         abstract public void AttachComponent(GameObject gameObjectToAttachTo);
@@ -46,9 +45,9 @@ namespace RPG.Characters
             return particlePrefab;
         }
 
-        public AudioClip GetAudioClip()
+        public AudioClip GetRandomAbilitySound()
         {
-            return audioClip;
+            return audioClips[Random.Range(0, audioClips.Length)];
         }
     }
 

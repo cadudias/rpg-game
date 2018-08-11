@@ -11,8 +11,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f79da0ccba18d204382a145360f3bd12, type: 3}
   m_Name: PA_L1
   m_EditorClassIdentifier: 
-  energyCost: 50
+  energyCost: 20
   particlePrefab: {fileID: 1631691770125224, guid: 0916010441228ce418f5eb70d7d8988e,
     type: 2}
-  audioClip: {fileID: 8300000, guid: a37b1237728b8ae4e8a09ef13255bf14, type: 3}
+  audioClips:
+  - {fileID: 8300000, guid: 9b0938587f70fd440aaedc37237e2d1b, type: 3}
   extraDamage: 50
