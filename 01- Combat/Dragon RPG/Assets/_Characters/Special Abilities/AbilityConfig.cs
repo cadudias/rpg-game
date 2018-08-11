@@ -27,8 +27,14 @@ namespace RPG.Characters
 
         [SerializeField] AudioClip[] audioClips;
 
-        // adds the component to the player at runtime
-        abstract public void AttachComponent(GameObject gameObjectToAttachTo);
+        public abstract AbilityBehaviour GetBehaviourComponent(GameObject objectToAttachTo);
+
+        public void AttachAbilityTo(GameObject objectToAttachTo)
+        {
+            AbilityBehaviour behaviourComponent = GetBehaviourComponent(objectToAttachTo);
+            behaviourComponent.SetConfig(this); // call from AbilityBehaviour class
+            behaviour = behaviourComponent;
+        }
 
         public void Use(AbilityUseParams useParams)
         {
