@@ -9,9 +9,7 @@ namespace RPG.Characters
 	{
 		[SerializeField] float movingTurnSpeed = 360;
 		[SerializeField] float stationaryTurnSpeed = 180;
-
-		[SerializeField] float m_MoveSpeedMultiplier = 1f;
-		[SerializeField] float m_AnimSpeedMultiplier = 1f;
+		[SerializeField] float animSpeedMultiplier = 1f;
 
 		Rigidbody my_rigidbody;
 		Animator animator;
@@ -56,7 +54,7 @@ namespace RPG.Characters
             // which affects the movement speed because of the root motion.
             if (move.magnitude > 0)
             {
-                animator.speed = m_AnimSpeedMultiplier;
+                animator.speed = animSpeedMultiplier;
             }
         }
 
