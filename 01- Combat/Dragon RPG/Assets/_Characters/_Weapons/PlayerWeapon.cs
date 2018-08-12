@@ -1,7 +1,7 @@
 ﻿using System;
 using UnityEngine;
 
-namespace RPG.Weapons
+namespace RPG.Characters
 {
     [CreateAssetMenu(menuName = ("RPG/PlayerWeapon"))]
     public class PlayerWeapon : ScriptableObject

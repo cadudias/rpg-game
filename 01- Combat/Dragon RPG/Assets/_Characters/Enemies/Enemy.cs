@@ -2,7 +2,6 @@
 
 // TODO consider re-wiring
 using RPG.Core;
-using RPG.Weapons;
 
 namespace RPG.Characters
 {
@@ -26,13 +25,11 @@ namespace RPG.Characters
 
         float currentHealthPoints;
 
-        AICharacterControl aic = null;
         Player player = null;
 
         void Start()
         {
             player = GameObject.FindObjectOfType<Player>();
-            aic = GetComponent<AICharacterControl>();
 
             currentHealthPoints = maxHealthPoints;
         }
@@ -62,11 +59,11 @@ namespace RPG.Characters
 
             if (PlayerIsInChaseRange(distanceToPlayer))
             {
-                aic.SetTarget(player.transform);
+                //aic.SetTarget(player.transform);
             }
             else
             {
-                aic.SetTarget(transform);
+               // aic.SetTarget(transform);
             }
         }
 
