@@ -14,7 +14,6 @@ GameObject:
   - component: {fileID: 11469404}
   - component: {fileID: 195334898716982656}
   - component: {fileID: 114576517642870190}
-  - component: {fileID: 114588575570430840}
   - component: {fileID: 114602213056998382}
   - component: {fileID: 114135564012626756}
   - component: {fileID: 82061943954424274}
@@ -84,14 +83,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ce7a80d520cacc042b5fe14f373d8173, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_MovingTurnSpeed: 1800
-  m_StationaryTurnSpeed: 1800
-  m_JumpPower: 6.41
-  m_GravityMultiplier: 2
-  m_RunCycleLegOffset: 0.2
-  m_MoveSpeedMultiplier: 1.5
-  m_AnimSpeedMultiplier: 1.7
-  m_GroundCheckDistance: 1
+  movingTurnSpeed: 1600
+  stationaryTurnSpeed: 1000
+  m_MoveSpeedMultiplier: 2000
+  m_AnimSpeedMultiplier: 2
 --- !u!136 &13615390
 CapsuleCollider:
   m_ObjectHideFlags: 1
@@ -2179,18 +2174,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a4bf6e8b13956a449b91502b87299771, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &114588575570430840
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 149790}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8c5335f0882fe4d478883cc8c58ce906, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  target: {fileID: 0}
+  stoppingDistance: 1
 --- !u!114 &114602213056998382
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2209,7 +2193,8 @@ MonoBehaviour:
   - {fileID: 11400000, guid: b45c314a122b7364c9faf8bb1cd033cb, type: 2}
   - {fileID: 11400000, guid: 069cb212d5c0a2d42b2016cc7de8e8b8, type: 2}
   - {fileID: 11400000, guid: 6f4086b7fe9aeb040bd3e5fe2281786d, type: 2}
-  weaponInUse: {fileID: 11400000, guid: 18df9151bd85ecc428573a1e9060a693, type: 2}
+  currentWeaponConfig: {fileID: 11400000, guid: 1d34ae9399376784284f12f438c7cba9,
+    type: 2}
   criticalHitChance: 0.1
   criticalHitMultiplier: 1.25
   animatorOverrideController: {fileID: 22100000, guid: fc507f71b1ee36247a9c5afd223f51f5,
@@ -2225,7 +2210,7 @@ MonoBehaviour:
   - {fileID: 8300000, guid: cd73263fb9e46f9448039aa45fc09fec, type: 3}
   - {fileID: 8300000, guid: 22e3c1b5fce0d714bb66778b48fc5f99, type: 3}
   - {fileID: 8300000, guid: fdbaac663143aab44ab1f7c0a0e57869, type: 3}
-  criticalParticleSystem: {fileID: 198623715843034628}
+  criticalHitParticle: {fileID: 198623715843034628}
 --- !u!137 &137415008159465346
 SkinnedMeshRenderer:
   m_ObjectHideFlags: 1
