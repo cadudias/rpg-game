@@ -15,7 +15,7 @@ namespace RPG.Characters
         public CameraRaycaster cameraRaycaster;
 
         [SerializeField] float baseDamage = 30f;
-        [SerializeField] float maxHealthPoints = 300f;
+        
         [SerializeField] public AbilityConfig[] abilities;
         [SerializeField] PlayerWeapon currentWeaponConfig = null;
 
@@ -25,7 +25,6 @@ namespace RPG.Characters
         [SerializeField] float criticalHitMultiplier = 1.25f;
 
         float lastHitTime = 0;
-        float currentHealthPoints;
 
         Energy energy = null;
         Enemy enemy = null;
@@ -33,32 +32,14 @@ namespace RPG.Characters
         /* Animation */
         [SerializeField] AnimatorOverrideController animatorOverrideController = null;
         Animator animator = null;
-        string DEATH_TRIGGER = "Death";
         string ATTACK_TRIGGER = "Attack";
         const string DEFAULT_ATTACK = "DEFAULT ATTACK";
 
-        /* SOUND */
-        [SerializeField] AudioClip[] damageSounds;
-        [SerializeField] AudioClip[] deathSounds;
-        AudioSource audioSource = null;
-
         [SerializeField] ParticleSystem criticalHitParticle = null;
-
-        public float healthAsPercentage
-        {
-            get
-            {
-                return currentHealthPoints / maxHealthPoints;
-            }
-        }
 
         void Start()
         {
-            audioSource = gameObject.GetComponent<AudioSource>();
-
             RegisterForMouseClick();
-
-            SetCurrentMaxHealth();
 
             PutWeaponInHand(currentWeaponConfig);
 
@@ -90,7 +71,8 @@ namespace RPG.Characters
 
         void Update()
         {
-            if (healthAsPercentage > Mathf.Epsilon)
+            var healthAsPercentage = GetComponent<HealthSystem>().healthAsPercentage;
+            if (healthAsPercentage > Mathf.Epsilon) // player still alive, scan for abilities
             {
                 ScanForAbilityKeyDown();
             }
@@ -113,8 +95,6 @@ namespace RPG.Characters
             animator.runtimeAnimatorController = animatorOverrideController;
             animatorOverrideController[DEFAULT_ATTACK] = currentWeaponConfig.GetAttackAnimationClip();
         }
-
-        private void SetCurrentMaxHealth() { currentHealthPoints = maxHealthPoints; }
 
         private GameObject RequestDominantHand()
         {
@@ -219,31 +199,7 @@ namespace RPG.Characters
 
         public void TakeDamage(float damage)
         {
-            currentHealthPoints = Mathf.Clamp(currentHealthPoints - damage, 0f, maxHealthPoints);
-
-            audioSource.clip = damageSounds[UnityEngine.Random.Range(0, damageSounds.Length)];
-            audioSource.Play();
-
-            if (currentHealthPoints <= 0) // player dies
-            {
-                StartCoroutine(KillPlayer());
-            }
-        }
-
-        public void Heal(float pointsToHeal)
-        {
-            currentHealthPoints = Mathf.Clamp(currentHealthPoints + pointsToHeal, 0f, maxHealthPoints);
-        }
-
-        IEnumerator KillPlayer()
-        {
-            animator.SetTrigger(DEATH_TRIGGER);
-
-            // reload scene with SceneManager.Reload
-            audioSource.clip = deathSounds[UnityEngine.Random.Range(0, deathSounds.Length)];
-            audioSource.Play();
-            yield return new WaitForSecondsRealtime(2f); // TODO use audio clip later
-            SceneManager.LoadScene(0);
+            throw new NotImplementedException();
         }
     }
 }

@@ -25,23 +25,15 @@ namespace RPG.Characters
 
         float currentHealthPoints;
 
-        Player player = null;
+        Player player;
 
         void Start()
         {
-            player = GameObject.FindObjectOfType<Player>();
-
-            currentHealthPoints = maxHealthPoints;
+            player = FindObjectOfType<Player>();
         }
 
         void Update()
         {
-            if (player.healthAsPercentage <= Mathf.Epsilon)
-            {
-                StopAllCoroutines();
-                Destroy(this); // stop enemy bahaviour
-            }
-
             float distanceToPlayer = Vector3.Distance(player.transform.position, transform.position);
 
             if (PlayerIsInAttackRange(distanceToPlayer) && !IsAttacking)
@@ -74,16 +66,6 @@ namespace RPG.Characters
             {
                 return currentHealthPoints / maxHealthPoints;
             }
-        }
-
-        public void TakeDamage(float damage)
-        {
-            //if (projectile.shooter.gameObject.layer == 9)
-            //{
-            currentHealthPoints = Mathf.Clamp(currentHealthPoints - damage, 0f, maxHealthPoints);
-            if (currentHealthPoints <= 0)
-                Destroy(gameObject);
-            //}
         }
 
         private bool PlayerIsOutsideAttackRange(float distanceToPlayer)
@@ -132,6 +114,11 @@ namespace RPG.Characters
 
             Gizmos.color = Color.blue;
             Gizmos.DrawWireSphere(transform.position, chaseRadius);
+        }
+
+        public void TakeDamage(float damage)
+        {
+            throw new System.NotImplementedException();
         }
     }
 }
