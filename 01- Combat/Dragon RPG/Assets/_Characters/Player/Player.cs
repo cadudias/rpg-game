@@ -14,9 +14,7 @@ namespace RPG.Characters
     {
         public CameraRaycaster cameraRaycaster;
 
-        [SerializeField] float baseDamage = 30f;
-        
-        [SerializeField] public AbilityConfig[] abilities;
+        [SerializeField] float baseDamage = 30f; 
         [SerializeField] PlayerWeapon currentWeaponConfig = null;
 
         GameObject weaponObject;
@@ -26,8 +24,8 @@ namespace RPG.Characters
 
         float lastHitTime = 0;
 
-        Energy energy = null;
-        Enemy enemy = null;
+        SpecialAbilities abilities;
+        Enemy enemy;
 
         /* Animation */
         [SerializeField] AnimatorOverrideController animatorOverrideController = null;
@@ -39,13 +37,13 @@ namespace RPG.Characters
 
         void Start()
         {
+            abilities = GetComponent<SpecialAbilities>();
+
             RegisterForMouseClick();
 
             PutWeaponInHand(currentWeaponConfig);
 
             SetAttackAnimation();
-
-            AttachInitialAbilities();
         }
 
         public void PutWeaponInHand(PlayerWeapon weaponToUse)
@@ -61,14 +59,6 @@ namespace RPG.Characters
             weaponObject.transform.localRotation = currentWeaponConfig.gripTransform.localRotation;
         }
 
-        private void AttachInitialAbilities()
-        {
-            for (int abilityIndex = 0; abilityIndex < abilities.Length; abilityIndex++)
-            {
-                abilities[abilityIndex].AttachAbilityTo(gameObject);
-            }
-        }
-
         void Update()
         {
             var healthAsPercentage = GetComponent<HealthSystem>().healthAsPercentage;
@@ -80,11 +70,11 @@ namespace RPG.Characters
 
         private void ScanForAbilityKeyDown()
         {
-            for (int keyIndex = 1; keyIndex < abilities.Length; keyIndex++)
+            for (int keyIndex = 1; keyIndex < abilities.GetNumberOfAbilities(); keyIndex++)
             {
                 if (Input.GetKeyDown(keyIndex.ToString()))
                 {
-                    AttemptSpecialAbility(keyIndex);
+                    abilities.AttemptSpecialAbility(keyIndex);
                 }
             }
         }
@@ -120,21 +110,7 @@ namespace RPG.Characters
             }
             else if (Input.GetMouseButtonDown(1))
             {
-                AttemptSpecialAbility(0);
-            }
-        }
-
-        private void AttemptSpecialAbility(int abilityIndex)
-        {
-            energy = GetComponent<Energy>();
-
-            var energyCost = abilities[abilityIndex].GetEnergyCost();
-            if (energy.IsEnergyAvailable(energyCost))
-            {
-                energy.ConsumeEnergy(energyCost);
-
-                var abilityParams = new AbilityUseParams(enemy, baseDamage);
-                abilities[abilityIndex].Use(abilityParams);
+                abilities.AttemptSpecialAbility(0);
             }
         }
 
