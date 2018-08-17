@@ -3,14 +3,11 @@ using UnityEngine.Assertions;
 
 // TODO consider re-wiring
 using RPG.CameraUI;
-using RPG.Core;
-using System.Collections;
-using UnityEngine.SceneManagement;
 using System;
 
 namespace RPG.Characters
 {
-    public class Player : MonoBehaviour, IDamageable
+    public class Player : MonoBehaviour
     {
         public CameraRaycaster cameraRaycaster;
 

@@ -10,14 +10,14 @@ namespace RPG.Characters
             this.config = configToSet;
         }
 
-        public override void Use(AbilityUseParams useParams)
+        public override void Use(GameObject target)
         {
             PlayAbilitySound();
-            DealRadialDamage(useParams);
+            DealRadialDamage();
             PlayParticleEffect();
         }       
 
-        private void DealRadialDamage(AbilityUseParams useParams)
+        private void DealRadialDamage()
         {
             //  Vector3.up - we dont care were it's moving it
             // this is designed to fire a ball but we're creating a STATIC SPHERE
@@ -26,11 +26,11 @@ namespace RPG.Characters
             // to see if it is about to hit anything.
             foreach (var hit in hits)
             {
-                var damageable = hit.collider.gameObject.GetComponent<IDamageable>();
+                var damageable = hit.collider.gameObject.GetComponent<HealthSystem>();
                 bool hitPlayer = hit.collider.gameObject.GetComponent<Player>();
                 if (damageable != null && !hitPlayer)
                 {
-                    float damageToDeal = useParams.baseDamage + (config as AreaOfEffectConfig).GetDamageToEachTarget();
+                    float damageToDeal = (config as AreaOfEffectConfig).GetDamageToEachTarget();
                     damageable.TakeDamage(damageToDeal);
                 }
             }

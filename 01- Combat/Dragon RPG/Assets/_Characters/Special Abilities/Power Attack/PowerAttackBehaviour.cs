@@ -9,17 +9,18 @@ namespace RPG.Characters
             this.config = configToSet;
         }
 
-        public override void Use(AbilityUseParams useParams)
+        public override void Use(GameObject target)
         {
             PlayAbilitySound();
-            DealRadialDamage(useParams);
+            DealRadialDamage(target);
             PlayParticleEffect();
         }
 
-        private void DealRadialDamage(AbilityUseParams useParams)
+        private void DealRadialDamage(GameObject target)
         {
-            float damageToDeal = useParams.baseDamage + (config as PowerAttackConfig).GetExtraDamage();
-            useParams.target.TakeDamage(damageToDeal);
+            float damageToDeal = (config as PowerAttackConfig).GetExtraDamage();
+
+            target.GetComponent<HealthSystem>().TakeDamage(damageToDeal);
         }
     }
 }

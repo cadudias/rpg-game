@@ -9,7 +9,7 @@ namespace RPG.Characters
             this.config = configToSet;
         }
 
-        public override void Use(AbilityUseParams useParams)
+        public override void Use(GameObject target)
         {
             PlayAbilitySound();
             
