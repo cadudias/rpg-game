@@ -25,11 +25,11 @@ namespace RPG.Characters
 
         float currentHealthPoints;
 
-        Player player;
+        PlayerMovement player;
 
         void Start()
         {
-            player = FindObjectOfType<Player>();
+            player = FindObjectOfType<PlayerMovement>();
         }
 
         void Update()

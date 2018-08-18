@@ -72,7 +72,7 @@ namespace RPG.Characters
             characterMovement.Kill(); // tell character movement that the dying is happening
             animator.SetTrigger(DEATH_TRIGGER);
 
-            var playerComponent = GetComponent<Player>();
+            var playerComponent = GetComponent<PlayerMovement>();
             if (playerComponent && playerComponent.isActiveAndEnabled) // relying on lazy evaluation
             {
                 audioSource.clip = deathSounds[UnityEngine.Random.Range(0, deathSounds.Length)];
