@@ -3,16 +3,19 @@
 --- !u!114 &11400000
 MonoBehaviour:
   m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
+  m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 91bf5dd13b8626d45a0a794eab3d2675, type: 3}
+  m_Script: {fileID: 11500000, guid: bf2b6be71749fb44f9729f11766b8e04, type: 3}
   m_Name: Rod
   m_EditorClassIdentifier: 
   gripTransform: {fileID: 4775376843926028, guid: 3963fd151d401a74b9890234f4918d6d,
     type: 2}
   weaponPrefab: {fileID: 1932776968336416, guid: 43262726d6c08264f85156e6723fe0d3,
     type: 2}
-  attackAnimation: {fileID: 7400000, guid: 1315bcd7509173f44bc6655b2673dd4d, type: 3}
+  attackAnimation: {fileID: 7400000, guid: 9a30e1d5a08198046b998ff084ada9d3, type: 3}
+  minTimeBetweenHits: 0.5
+  maxAttackRange: 2
+  additionalDamage: 10

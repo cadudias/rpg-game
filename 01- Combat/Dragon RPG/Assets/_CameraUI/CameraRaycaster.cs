@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using UnityEngine.EventSystems;
 using System.Collections.Generic;
-using RPG.Characters; // so we can detect by type, if they have the Enemy component on them
+using RPG.Characters; // so we can detect by type, if they have the EnemyAI component on them
 using System;
 
 namespace RPG.CameraUI
@@ -19,7 +19,7 @@ namespace RPG.CameraUI
         public delegate void OnMouseOverTerrain(Vector3 destination);
         public event OnMouseOverTerrain onMouseOverPotentiallyWalkable;
 
-        public delegate void OnMouseOverEnemy(Enemy enemy);
+        public delegate void OnMouseOverEnemy(EnemyAI enemy);
         public event OnMouseOverEnemy onMouseOverEnemy;
 
         // drawn a rectangle of th size of the screen
@@ -60,7 +60,7 @@ namespace RPG.CameraUI
             if (Physics.Raycast(ray, out hitInfo, maxRaycastDepth))
             {
                 var gameObjectHit = hitInfo.collider.gameObject;
-                var enemyHit = gameObjectHit.GetComponent<Enemy>();
+                var enemyHit = gameObjectHit.GetComponent<EnemyAI>();
 
                 if (enemyHit)
                 {

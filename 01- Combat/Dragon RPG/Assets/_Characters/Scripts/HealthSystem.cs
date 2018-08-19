@@ -15,12 +15,12 @@ namespace RPG.Characters
 
         float currentHealthPoints;
 
-        const string DEATH_TRIGGER = "Death";
+        private const string DEATH_TRIGGER = "Death";
         Animator animator;
         AudioSource audioSource;
         Character characterMovement;
 
-        public float healthAsPercentage
+        public float HealthAsPercentage
         {
             get
             {
@@ -48,7 +48,7 @@ namespace RPG.Characters
         {
             if (healthBar)
             {
-                healthBar.fillAmount = healthAsPercentage;
+                healthBar.fillAmount = HealthAsPercentage;
             }
         }
 

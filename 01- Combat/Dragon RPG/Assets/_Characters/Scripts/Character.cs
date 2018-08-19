@@ -82,6 +82,11 @@ namespace RPG.Characters
             }
         }
 
+        public AnimatorOverrideController GetAnimatorOverrideController()
+        {
+            return animatorOverrideController;
+        }
+
         private Vector3 ShortDestination(Vector3 destination, float shortening)
         {
             Vector3 reductionVector = (destination - transform.position).normalized * shortening;
