@@ -1,7 +1,4 @@
 ﻿using UnityEngine;
-using UnityEngine.Assertions;
-using System;
-
 using RPG.CameraUI; // for mouse events
 
 namespace RPG.Characters
@@ -20,8 +17,7 @@ namespace RPG.Characters
         {
             character = GetComponent<Character>();
             abilities = GetComponent<SpecialAbilities>();
-
-            abilities = GetComponent<SpecialAbilities>();
+            weaponSystem = GetComponent<WeaponSystem>();
 
             RegisterForMouseEvents();
         }

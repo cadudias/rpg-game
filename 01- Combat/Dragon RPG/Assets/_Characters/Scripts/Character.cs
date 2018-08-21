@@ -1,3 +1,4 @@
+using System;
 using RPG.CameraUI;
 using UnityEngine;
 using UnityEngine.AI;
@@ -67,6 +68,11 @@ namespace RPG.Characters
 
             var audioSource = gameObject.AddComponent<AudioSource>();
             audioSource.spatialBlend = audioSourceSpatialBlend;
+        }
+
+        public float GetAnimSpeedMultiplier()
+        {
+            return animator.speed;
         }
 
         void Update()

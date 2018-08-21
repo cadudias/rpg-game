@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Assertions;
@@ -47,6 +48,39 @@ namespace RPG.Characters
         public void AttackTarget(GameObject targetToAttack)
         {
             target = targetToAttack;
+            StartCoroutine(AttackTargetRepeatedly());
+        }
+
+        IEnumerator AttackTargetRepeatedly()
+        {
+            // determine if alive (attacker and defender)
+            bool attackerStillAlive = GetComponent<HealthSystem>().HealthAsPercentage >= Mathf.Epsilon;
+            bool defenderStillAlive = target.GetComponent<HealthSystem>().HealthAsPercentage >= Mathf.Epsilon;
+
+            while (attackerStillAlive && defenderStillAlive)
+            {
+                float weaponHitPeriod = currentWeaponConfig.GetMinTimeBetweenHits();
+                float timeToWait = weaponHitPeriod * character.GetAnimSpeedMultiplier();
+
+                bool isTimeToHitAgain = Time.time - lastHitTime > timeToWait;
+                if (isTimeToHitAgain)
+                {
+                    AttackTargetOnce();
+                    lastHitTime = Time.time;
+                }
+
+                yield return  new WaitForSeconds(timeToWait);
+            }
+        }
+
+        private void AttackTargetOnce()
+        {
+            transform.LookAt(target.transform);
+            animator.SetTrigger(ATTACK_TRIGGER);
+            //SetAttackAnimation();
+            //PlayAnimation();
+
+            //target.GetComponent<HealthSystem>().TakeDamage(GetCurrentWeapon().GetAdditionalDamage());
         }
 
         public void PutWeaponInHand(WeaponConfig weaponToUse)
