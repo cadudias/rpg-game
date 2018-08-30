@@ -44,8 +44,9 @@ namespace RPG.Characters
 
         void OnTriggerEnter()
         {
+            // pick up weapon only if it's player
+            FindObjectOfType<PlayerControl>().GetComponent<WeaponSystem>().PutWeaponInHand(weaponConfig);
             audioSource.PlayOneShot(pickupSFX);
-            FindObjectOfType<WeaponSystem>().PutWeaponInHand(weaponConfig);
         }
     }
 }

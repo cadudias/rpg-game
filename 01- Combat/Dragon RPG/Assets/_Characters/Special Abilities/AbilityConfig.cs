@@ -9,6 +9,7 @@ namespace RPG.Characters
         [Header("Special Ability General")]
         [SerializeField] public float energyCost = 10f;
         [SerializeField] GameObject particlePrefab;
+        [SerializeField] AnimationClip abilityAnimation;
 
         // sub Config classes can set this value
         protected AbilityBehaviour behaviour;
@@ -16,12 +17,17 @@ namespace RPG.Characters
         [SerializeField] AudioClip[] audioClips;
 
         public abstract AbilityBehaviour GetBehaviourComponent(GameObject objectToAttachTo);
-
+        
         public void AttachAbilityTo(GameObject objectToAttachTo)
         {
             AbilityBehaviour behaviourComponent = GetBehaviourComponent(objectToAttachTo);
             behaviourComponent.SetConfig(this); // call from AbilityBehaviour class
             behaviour = behaviourComponent;
+        }
+
+        public AnimationClip GetAbilityAnimation()
+        {
+            return abilityAnimation;
         }
 
         public void Use(GameObject target)

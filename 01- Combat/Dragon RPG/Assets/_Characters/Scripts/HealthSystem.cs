@@ -68,16 +68,15 @@ namespace RPG.Characters
 
         IEnumerator KillCharacter()
         {
-            StopAllCoroutines();
             characterMovement.Kill(); // tell character movement that the dying is happening
             animator.SetTrigger(DEATH_TRIGGER);
 
-            var playerComponent = GetComponent<PlayerMovement>();
+            var playerComponent = GetComponent<PlayerControl>();
             if (playerComponent && playerComponent.isActiveAndEnabled) // relying on lazy evaluation
             {
                 audioSource.clip = deathSounds[UnityEngine.Random.Range(0, deathSounds.Length)];
                 audioSource.Play(); // override any existing sound
-                yield return new WaitForSecondsRealtime(2f); // TODO use audio clip later
+                yield return new WaitForSecondsRealtime(audioSource.clip.length);
                 SceneManager.LoadScene(0); // reload scene
             }
             else

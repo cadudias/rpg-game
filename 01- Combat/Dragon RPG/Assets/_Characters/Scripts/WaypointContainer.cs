@@ -23,7 +23,6 @@ namespace RPG.Characters
 
             foreach (Transform waypoint in transform)
             {
-                Debug.Log("aaa");
                 Gizmos.DrawSphere(waypoint.position, .2f);
                 Gizmos.DrawLine(previousPosition, waypoint.position);
                 previousPosition = waypoint.position;
