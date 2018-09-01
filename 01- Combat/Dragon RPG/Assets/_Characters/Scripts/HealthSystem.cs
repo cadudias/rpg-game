@@ -13,7 +13,7 @@ namespace RPG.Characters
         [SerializeField] AudioClip[] deathSounds;
         [SerializeField] float deathVanishSeconds = 1f;
 
-        float currentHealthPoints;
+        [SerializeField] float currentHealthPoints;
 
         private const string DEATH_TRIGGER = "Death";
         Animator animator;
