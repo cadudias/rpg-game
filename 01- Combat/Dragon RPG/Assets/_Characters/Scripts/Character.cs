@@ -31,6 +31,7 @@ namespace RPG.Characters
         [Header("Nav Mesh Agent")]
         [SerializeField] float navMeshAgentSpeed = 1f;
         [SerializeField] float navMeshAgentStoppingDistance = 1.3f;
+        [SerializeField] [Range(.1f, 1f)] float animatorFowardCap = 1f;
 
         NavMeshAgent navMeshAgent;
         Animator animator;
@@ -152,7 +153,7 @@ namespace RPG.Characters
 
         void UpdateAnimator()
         {
-            animator.SetFloat("Forward", forwardAmount, 0.1f, Time.deltaTime);
+            animator.SetFloat("Forward", forwardAmount * animatorFowardCap, 0.1f, Time.deltaTime);
             animator.SetFloat("Turn", turnAmount, 0.1f, Time.deltaTime);
             animator.speed = animationSpeedMultiplier;
         }

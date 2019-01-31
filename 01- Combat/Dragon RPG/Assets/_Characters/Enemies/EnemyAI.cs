@@ -51,26 +51,32 @@ namespace RPG.Characters
 
             distanceToPlayer = Vector3.Distance(player.transform.position, transform.position);
 
-            bool playerIsOutOfRangeAndEnemyIsNotPatrolling = distanceToPlayer > chaseRadius && state != State.patrolling;
-            if (playerIsOutOfRangeAndEnemyIsNotPatrolling)
+            //bool playerIsOutOfRangeAndEnemyIsNotPatrolling = distanceToPlayer > chaseRadius && state != State.patrolling;
+
+            bool inWeaponCircle = distanceToPlayer <= currentWeaponRange;
+            bool inChaseCircle = distanceToPlayer > currentWeaponRange && distanceToPlayer <= chaseRadius;
+            bool outsideChaseCircle = distanceToPlayer > chaseRadius;
+
+            if (outsideChaseCircle)
             {
                 StopAllCoroutines();
                 weaponSystem.StopAttacking();
                 StartCoroutine(Patrol());
             }
 
-            bool playerIsInRangeAndEnemyIsNotChasing = distanceToPlayer <= chaseRadius && state != State.chasing;
-            if (playerIsInRangeAndEnemyIsNotChasing)
+            //bool playerIsInRangeAndEnemyIsNotChasing = distanceToPlayer <= chaseRadius && state != State.chasing;
+            if (inChaseCircle)
             {
                 StopAllCoroutines();
                 weaponSystem.StopAttacking();
                 StartCoroutine(ChasePlayer());
             }
 
-            bool playerIsInWeaponRangeAndEnenyIsNotAttacking = distanceToPlayer <= currentWeaponRange && state != State.attacking;
-            if (playerIsInWeaponRangeAndEnenyIsNotAttacking)
+            //bool playerIsInWeaponRangeAndEnenyIsNotAttacking = distanceToPlayer <= currentWeaponRange && state != State.attacking;
+            if (inWeaponCircle)
             {
                 StopAllCoroutines();
+                state = State.attacking;
                 weaponSystem.AttackTarget(player.gameObject);
             }
         }

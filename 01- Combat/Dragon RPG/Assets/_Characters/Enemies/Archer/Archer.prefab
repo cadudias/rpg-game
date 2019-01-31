@@ -1808,7 +1808,7 @@ MonoBehaviour:
     type: 2}
   characterAvatar: {fileID: 9000000, guid: d288a0e4a2d923b46898986e979da643, type: 3}
   colliderCenter: {x: 0, y: 1.03, z: 0}
-  colliderRadius: 0.2
+  colliderRadius: 1
   colliderHeight: 2.03
   moveSpeedMultiplier: 0.7
   moveThreshold: 1
@@ -1817,6 +1817,7 @@ MonoBehaviour:
   animationSpeedMultiplier: 1.5
   navMeshAgentSpeed: 1
   navMeshAgentStoppingDistance: 1.3
+  animatorFowardCap: 1
 --- !u!114 &114410303337295050
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2098,7 +2099,7 @@ RectTransform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1860528818386880}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 22.04}
+  m_LocalPosition: {x: 0, y: 0, z: 16.61}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4688303329593954}
@@ -2108,6 +2109,6 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -15.83, y: 0}
+  m_AnchoredPosition: {x: -28.42, y: 0}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
