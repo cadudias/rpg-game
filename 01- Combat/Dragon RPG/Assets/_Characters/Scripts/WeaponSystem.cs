@@ -84,10 +84,15 @@ namespace RPG.Characters
 
             while (attackerStillAlive && defenderStillAlive)
             {
-                float weaponHitPeriod = currentWeaponConfig.GetMinTimeBetweenHits();
-                float timeToWait = weaponHitPeriod * character.GetAnimSpeedMultiplier();
+                var animationClip = currentWeaponConfig.GetAttackAnimationClip();
+
+                // is the multiplier is 2 it will be twice as fast, them the ckip time will be half as long
+                float animationClipTime = animationClip.length / character.GetAnimSpeedMultiplier();
+
+                float timeToWait = animationClipTime + currentWeaponConfig.GetTimeBetweenAnimationCycles();
 
                 bool isTimeToHitAgain = Time.time - lastHitTime > timeToWait;
+
                 if (isTimeToHitAgain)
                 {
                     AttackTargetOnce();
@@ -203,7 +208,7 @@ namespace RPG.Characters
         bool AttackDelayTimeEnded()
         {
             float timePassedSinceLastHit = Time.time - lastHitTime;
-            return timePassedSinceLastHit > GetCurrentWeapon().GetMinTimeBetweenHits();
+            return timePassedSinceLastHit > GetCurrentWeapon().GetTimeBetweenAnimationCycles();
         }
     }
 }
