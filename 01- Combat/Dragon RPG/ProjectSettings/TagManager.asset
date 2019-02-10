@@ -5,7 +5,6 @@ TagManager:
   serializedVersion: 2
   tags:
   - SceneSetup
-  - Collide
   layers:
   - Default
   - TransparentFX
@@ -16,8 +15,8 @@ TagManager:
   - 
   - 
   - Potentially Walkable
-  - Enemy
-  - Player
+  - 
+  - 
   - 
   - 
   - 

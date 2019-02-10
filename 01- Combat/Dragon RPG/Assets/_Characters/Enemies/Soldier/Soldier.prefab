@@ -693,6 +693,7 @@ GameObject:
   - component: {fileID: 114802108527162928}
   - component: {fileID: 114189070443409176}
   - component: {fileID: 114618724172508932}
+  - component: {fileID: 114823360752790548}
   m_Layer: 0
   m_Name: Soldier
   m_TagString: Untagged
@@ -1905,6 +1906,21 @@ MonoBehaviour:
   baseDamage: 30
   currentWeaponConfig: {fileID: 11400000, guid: 18df9151bd85ecc428573a1e9060a693,
     type: 2}
+--- !u!114 &114823360752790548
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1811488023352884}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1725bd2f95ff64046b2e017a2e069734, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  clip: {fileID: 8300000, guid: 4debdfef7400bf94aac9a0b633330f55, type: 3}
+  layerFilter: 0
+  playerDistanceThreshold: 6.59
+  isOneTimeOnly: 1
 --- !u!114 &114892663194902426
 MonoBehaviour:
   m_ObjectHideFlags: 1

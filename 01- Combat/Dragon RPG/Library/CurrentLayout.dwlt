@@ -106,10 +106,10 @@ MonoBehaviour:
     y: 30
     width: 1904
     height: 931
-  m_MinSize: {x: 581, y: 492}
+  m_MinSize: {x: 579, y: 471}
   m_MaxSize: {x: 14002, y: 14042}
   vertical: 0
-  controlID: 56
+  controlID: 114
 --- !u!114 &6
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -130,7 +130,7 @@ MonoBehaviour:
     y: 0
     width: 1539
     height: 931
-  m_MinSize: {x: 306, y: 492}
+  m_MinSize: {x: 304, y: 471}
   m_MaxSize: {x: 10002, y: 14042}
   vertical: 1
   controlID: 12
@@ -154,8 +154,8 @@ MonoBehaviour:
     y: 0
     width: 1539
     height: 660
-  m_MinSize: {x: 306, y: 221}
-  m_MaxSize: {x: 8006, y: 4021}
+  m_MinSize: {x: 304, y: 200}
+  m_MaxSize: {x: 8004, y: 4021}
   vertical: 0
   controlID: 13
 --- !u!114 &8
@@ -176,8 +176,8 @@ MonoBehaviour:
     y: 0
     width: 504
     height: 660
-  m_MinSize: {x: 202, y: 221}
-  m_MaxSize: {x: 4002, y: 4021}
+  m_MinSize: {x: 200, y: 200}
+  m_MaxSize: {x: 4000, y: 4000}
   m_ActualView: {fileID: 13}
   m_Panes:
   - {fileID: 13}
@@ -370,9 +370,9 @@ MonoBehaviour:
   m_PersistentViewDataDictionary: {fileID: 0}
   m_TreeViewState:
     scrollPos: {x: 0, y: 0}
-    m_SelectedIDs: 1e2e0000
+    m_SelectedIDs: 
     m_LastClickedID: 0
-    m_ExpandedIDs: e6fbffff00000000945800004a5900008c590000
+    m_ExpandedIDs: e6fbffff00000000945800004a590000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -427,9 +427,9 @@ MonoBehaviour:
   m_isRotationLocked: 0
   m_AudioPlay: 0
   m_Position:
-    m_Target: {x: -11.913574, y: -7.9157457, z: 7.6907806}
+    m_Target: {x: -11.32221, y: -8.995451, z: 6.070793}
     speed: 2
-    m_Value: {x: -11.913574, y: -7.9157457, z: 7.6907806}
+    m_Value: {x: -11.32221, y: -8.995451, z: 6.070793}
   m_RenderMode: 0
   m_CameraMode:
     drawMode: 0
@@ -457,13 +457,13 @@ MonoBehaviour:
       speed: 2
       m_Value: 0
   m_Rotation:
-    m_Target: {x: -0.31440142, y: -0.23251912, z: 0.07972923, w: -0.9169133}
+    m_Target: {x: -0.3521597, y: -0.2463838, z: 0.0966504, w: -0.89774007}
     speed: 2
-    m_Value: {x: -0.31440142, y: -0.23251912, z: 0.07972922, w: -0.9169133}
+    m_Value: {x: -0.3521597, y: -0.2463838, z: 0.0966504, w: -0.89774007}
   m_Size:
-    m_Target: 20.646122
+    m_Target: 28.53935
     speed: 2
-    m_Value: 20.646122
+    m_Value: 28.53935
   m_Ortho:
     m_Target: 0
     speed: 2
@@ -512,20 +512,20 @@ MonoBehaviour:
     m_ShowAllHits: 0
     m_SearchArea: 1
     m_Folders:
-    - Assets/_Characters/_Weapons/Melee/Dirty Old Hoe
+    - Assets/_Characters/Player/Sounds
   m_ViewMode: 1
   m_StartGridSize: 92
   m_LastFolders:
-  - Assets/_Characters/_Weapons/Melee/Dirty Old Hoe
+  - Assets/_Characters/Player/Sounds
   m_LastFoldersGridSize: -1
   m_LastProjectPath: C:\rpg\01- Combat\Dragon RPG
   m_LockTracker:
     m_IsLocked: 0
   m_FolderTreeState:
-    scrollPos: {x: 0, y: 120}
-    m_SelectedIDs: ce310000
-    m_LastClickedID: 12750
-    m_ExpandedIDs: 00000000aa2a00000a34000034390000d83c0000723e000080410000d64100004442000018490000c64900009a4f00001056000086560000086200000a6200000c6200000e62000010620000126200001462000016620000186200001a6200001c6200001e62000020620000226200002462000026620000286200002a6200002c6200002e620000306200003262000000ca9a3b
+    scrollPos: {x: 0, y: 471}
+    m_SelectedIDs: e0460000
+    m_LastClickedID: 18144
+    m_ExpandedIDs: 00000000aa2a00000a34000034390000d83c0000723e000080410000d64100004442000018490000c64900009a4f0000285100001056000086560000086200000a6200000c6200000e62000010620000126200001462000016620000186200001a6200001c6200001e62000020620000226200002462000026620000286200002a6200002c6200002e620000306200003262000000ca9a3b
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -553,7 +553,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 
     m_LastClickedID: 0
-    m_ExpandedIDs: 00000000aa2a00000a34000034390000d83c000080410000d64100004442000018490000c64900009a4f00001056000086560000086200000a6200000c6200000e62000010620000126200001462000016620000186200001a6200001c6200001e62000020620000226200002462000026620000286200002a6200002c6200002e6200003062000032620000
+    m_ExpandedIDs: 00000000aa2a00000a34000034390000d83c0000723e000080410000d64100004442000018490000c64900009a4f00001056000086560000086200000a6200000c6200000e62000010620000126200001462000016620000186200001a6200001c6200001e62000020620000226200002462000026620000286200002a6200002c6200002e6200003062000032620000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -737,7 +737,7 @@ MonoBehaviour:
   m_AnimEditor: {fileID: 0}
   m_LockTracker:
     m_IsLocked: 0
-  m_LastSelectedObjectID: 22944
+  m_LastSelectedObjectID: -3342
 --- !u!114 &19
 MonoBehaviour:
   m_ObjectHideFlags: 52
