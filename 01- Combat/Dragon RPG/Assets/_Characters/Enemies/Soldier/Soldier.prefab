@@ -1862,7 +1862,7 @@ MonoBehaviour:
   moveThreshold: 1
   movingTurnSpeed: 360
   stationaryTurnSpeed: 180
-  animationSpeedMultiplier: 1.5
+  animationSpeedMultiplier: 1.05
   navMeshAgentSpeed: 1
   navMeshAgentStoppingDistance: 1.3
   animatorFowardCap: 1
@@ -1877,7 +1877,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aa61ebe3da78c8d4f8599157145ead32, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealthPoints: 300
+  maxHealthPoints: 200
   healthBar: {fileID: 114892663194902426}
   damageSounds:
   - {fileID: 8300000, guid: 63ebb107c66fdf44da127cda6716bb9d, type: 3}
@@ -1903,7 +1903,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 369422cae8ab54b428dba69b520a3a1b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  baseDamage: 30
+  baseDamage: 20
   currentWeaponConfig: {fileID: 11400000, guid: 18df9151bd85ecc428573a1e9060a693,
     type: 2}
 --- !u!114 &114823360752790548
@@ -1917,7 +1917,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1725bd2f95ff64046b2e017a2e069734, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  clip: {fileID: 8300000, guid: 4debdfef7400bf94aac9a0b633330f55, type: 3}
+  clip: {fileID: 8300000, guid: 03ead0ce1befd1d4cb5ade7ee363d04c, type: 3}
   layerFilter: 0
   playerDistanceThreshold: 6.59
   isOneTimeOnly: 1
@@ -1963,7 +1963,7 @@ SkinnedMeshRenderer:
   m_ReflectionProbeUsage: 1
   m_RenderingLayerMask: 4294967295
   m_Materials:
-  - {fileID: 2100000, guid: ccae2dc6cf6f0c4479b782fedd0c8172, type: 2}
+  - {fileID: 2100000, guid: f62b52b2d4b721742a0bc5c6b4db468d, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

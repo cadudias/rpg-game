@@ -78,14 +78,21 @@ namespace RPG.Characters
 
         void Update()
         {
-            var isMovingToStopPosition = navMeshAgent.remainingDistance > navMeshAgent.stoppingDistance;
-            if (isMovingToStopPosition && isAlive)
+            // verifica se o char está sobre o nav mesh
+            if (!navMeshAgent.isOnNavMesh)
             {
-                Move(navMeshAgent.desiredVelocity);
-            }
-            else
+                Debug.LogError(gameObject.name + "uh oh this guy is not on the nav mesh");
+            } else
             {
-                Move(Vector3.zero);
+                var isMovingToStopPosition = navMeshAgent.remainingDistance > navMeshAgent.stoppingDistance;
+                if (isMovingToStopPosition && isAlive)
+                {
+                    Move(navMeshAgent.desiredVelocity);
+                }
+                else
+                {
+                    Move(Vector3.zero);
+                }
             }
         }
 
