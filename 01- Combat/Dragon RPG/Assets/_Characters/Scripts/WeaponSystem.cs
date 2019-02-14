@@ -53,9 +53,10 @@ namespace RPG.Characters
             float characterHealth = GetComponent<HealthSystem>().HealthAsPercentage;
             bool characterIsDead = (characterHealth <= Mathf.Epsilon);
 
+            // no update fica vendo se o personagem ou os inimigos estao mortos ou esta fora de alcance pra parar de atacar
             if (characterIsDead || targetIsOutOfRange || targetIsDead)
             {
-                
+                StopAttacking();
             }
         }
 
@@ -82,11 +83,13 @@ namespace RPG.Characters
             bool attackerStillAlive = GetComponent<HealthSystem>().HealthAsPercentage >= Mathf.Epsilon;
             bool defenderStillAlive = target.GetComponent<HealthSystem>().HealthAsPercentage >= Mathf.Epsilon;
 
+            // while the attacker and the defender still alive keep attacking ???
+            // tneho que testar se o atacante ainda esta vivo, se esta continua atacando
             while (attackerStillAlive && defenderStillAlive)
             {
                 var animationClip = currentWeaponConfig.GetAttackAnimationClip();
 
-                // is the multiplier is 2 it will be twice as fast, them the ckip time will be half as long
+                // is the multiplier is 2 it will be twice as fast, them the clip time will be half as long
                 float animationClipTime = animationClip.length / character.GetAnimSpeedMultiplier();
 
                 float timeToWait = animationClipTime + currentWeaponConfig.GetTimeBetweenAnimationCycles();
@@ -99,7 +102,7 @@ namespace RPG.Characters
                     lastHitTime = Time.time;
                 }
 
-                yield return  new WaitForSeconds(timeToWait);
+                yield return new WaitForSeconds(timeToWait);
             }
         }
 
@@ -117,7 +120,11 @@ namespace RPG.Characters
         IEnumerator DamageAfterDelay(float damageDelay)
         {
             yield return new WaitForSecondsRealtime(damageDelay);
-            target.GetComponent<HealthSystem>().TakeDamage(CalculateDamage());
+
+            if (target != null)
+            {
+                target.GetComponent<HealthSystem>().TakeDamage(CalculateDamage());
+            }
         }
 
         public void PutWeaponInHand(WeaponConfig weaponToUse)

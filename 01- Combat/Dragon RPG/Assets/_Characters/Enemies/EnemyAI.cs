@@ -8,7 +8,7 @@ namespace RPG.Characters
     [RequireComponent(typeof(HealthSystem))]
     public class EnemyAI : MonoBehaviour
     {
-        [SerializeField] float maxHealthPoints = 100f;
+        //[SerializeField] float maxHealthPoints = 100f;
         [SerializeField] float chaseRadius = 6f;
         [SerializeField] private GameObject patrolPath;
         [SerializeField] private float waypointTolerance = 2f;

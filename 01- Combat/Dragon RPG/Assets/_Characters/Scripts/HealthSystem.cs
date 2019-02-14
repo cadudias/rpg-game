@@ -11,7 +11,7 @@ namespace RPG.Characters
         [SerializeField] Image healthBar;
         [SerializeField] AudioClip[] damageSounds;
         [SerializeField] AudioClip[] deathSounds;
-        [SerializeField] float deathVanishSeconds = 1f;
+        [SerializeField] float deathVanishSeconds = .1f;
 
         [SerializeField] float currentHealthPoints;
 
@@ -19,6 +19,8 @@ namespace RPG.Characters
         Animator animator;
         AudioSource audioSource;
         Character characterMovement;
+
+        bool isDestroyed = false;
 
         public float HealthAsPercentage
         {
@@ -48,6 +50,7 @@ namespace RPG.Characters
         {
             if (healthBar)
             {
+                Debug.Log("HealthAsPercentage: " + HealthAsPercentage);
                 healthBar.fillAmount = HealthAsPercentage;
             }
         }
@@ -56,10 +59,10 @@ namespace RPG.Characters
         {
             currentHealthPoints = Mathf.Clamp(currentHealthPoints - damage, 0f, maxHealthPoints);
 
-            var clip = damageSounds[UnityEngine.Random.Range(0, damageSounds.Length)];
+            var clip = damageSounds[Random.Range(0, damageSounds.Length)];
             audioSource.PlayOneShot(clip); // if other sounds are playing then can continue
 
-            bool characterDies = (currentHealthPoints - damage <= 0);
+            bool characterDies = (currentHealthPoints <= 0);
             if (characterDies)
             {
                 StartCoroutine(KillCharacter());
@@ -71,9 +74,10 @@ namespace RPG.Characters
             characterMovement.Kill(); // tell character movement that the dying is happening
             animator.SetTrigger(DEATH_TRIGGER);
 
-            audioSource.clip = deathSounds[UnityEngine.Random.Range(0, deathSounds.Length)];
+            audioSource.clip = deathSounds[Random.Range(0, deathSounds.Length)];
             audioSource.Play(); // override any existing sound
             yield return new WaitForSecondsRealtime(audioSource.clip.length);
+            //yield return new WaitForSecondsRealtime(0);
 
             var playerComponent = GetComponent<PlayerControl>();
             if (playerComponent && playerComponent.isActiveAndEnabled) // relying on lazy evaluation
@@ -82,7 +86,12 @@ namespace RPG.Characters
             }
             else
             {
-                Destroy(gameObject, deathVanishSeconds);
+                if (!isDestroyed)
+                {
+                    Debug.Log("destroy char");
+                    Destroy(gameObject, deathVanishSeconds);
+                    isDestroyed = true;
+                }
             }
         }
 
